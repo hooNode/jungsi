@@ -14,8 +14,7 @@ export const withAuth =
     useEffect(() => {
       // @ts-ignore
       dispatch(auth()).then((res) => {
-        console.log(res);
-        if (!res.payload.isAuth) {
+        if (!res.payload) {
           if (option) {
             alert("로그인을 헤주세요.");
             navigate("/login");

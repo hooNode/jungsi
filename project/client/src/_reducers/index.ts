@@ -1,11 +1,17 @@
 import { combineReducers } from "redux";
-import { legacy_createStore as createStore } from "redux";
-import user from "./user_reducer";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import user from "./user_reducer";
+
+const persistConfig = {
+  key: "root",
+  storage: storage,
+  whitelist: ["user"],
+  // blacklist: ["user"],
+};
 
 const rootReducer = combineReducers({
   user,
 });
 
-export default rootReducer;
+export default persistReducer(persistConfig, rootReducer);

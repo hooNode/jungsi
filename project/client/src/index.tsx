@@ -11,29 +11,17 @@ import ReduxThunk from "redux-thunk";
 import Reducer from "./_reducers";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION__: any;
-  }
-}
-const createStoreWithMiddleware = applyMiddleware(
-  promiseMiddleware,
-  ReduxThunk
-)(createStore);
+import { persistor, store } from "./_reducers/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Provider
-      store={createStoreWithMiddleware(
-        Reducer,
-        window.__REDUX_DEVTOOLS_EXTENSION__ &&
-          window.__REDUX_DEVTOOLS_EXTENSION__()
-      )}
-    >
-      <App />
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

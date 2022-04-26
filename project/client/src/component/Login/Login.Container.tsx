@@ -33,10 +33,9 @@ export default function LoginPage() {
       email,
       password,
     };
-    console.log(body);
     // @ts-ignore
     dispatch(loginUser(body)).then((res) => {
-      if (res.payload.loginSuccess) {
+      if (res.payload) {
         navigate("/");
       } else {
         alert("err");
