@@ -58,6 +58,7 @@ app.post("/api/users/login", (req, res) => {
           success: false,
           message: "비밀번호가 틀렸습니다.",
         });
+
       // 3. 위 두 가지가 확인되었다면 token을 생성해준다.
       userInfo.generateToken((err, userInfo) => {
         if (err) return res.status(400).send(err);
