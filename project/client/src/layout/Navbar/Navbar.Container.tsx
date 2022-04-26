@@ -3,20 +3,20 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavbarUI from "./Navbar.Presenter";
 import styled from "styled-components";
+import { auth } from "../../_action/user_action";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const LoadingNavBar = styled.div`
   height: 33px;
 `;
 
 export default function Nabar() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state);
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
-  const getLoginUser = async () => {
-    const result = await axios.get("/api/users/auth").then((res) => res.data);
-    setIsLogin(result.isAuth);
-  };
 
   const onClickLogOut = async () => {
     await axios.get("/api/users/logout").then((res) => {
@@ -30,7 +30,8 @@ export default function Nabar() {
   };
 
   useEffect(() => {
-    getLoginUser();
+    // @ts-ignore
+    dispatch(auth()).then((res) => setIsLogin(res.payload.isAuth));
     setTimeout(() => {
       setIsLoading(false);
     }, 100);

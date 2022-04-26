@@ -4,17 +4,18 @@ import { Provider } from "react-redux";
 import App from "./App";
 import { applyMiddleware } from "redux";
 import { legacy_createStore as createStore } from "redux";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
 import Reducer from "./_reducers";
-
-// 이 부분 블로그
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION__: any;
   }
 }
-
 const createStoreWithMiddleware = applyMiddleware(
   promiseMiddleware,
   ReduxThunk

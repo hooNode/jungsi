@@ -22,13 +22,13 @@ mongoose
   .then(() => console.log("Mongoose Connected"))
   .catch((err) => console.log(err));
 
-app.get("/", (req, res) => {
-  console.log("랜딩페이지");
-  res.send("Hello World!!!!!");
+app.listen(port, () => {
+  console.log(`성공적으로 서버를 실행했습니다. ${port}`);
 });
 
-app.get("/api/hello", (req, res) => {
-  res.send("테스트 API");
+app.get("/", (req, res) => {
+  console.log("testing...");
+  res.send("connect success");
 });
 
 // register route
@@ -102,8 +102,4 @@ app.get("/api/users/logout", auth, (req, res) => {
         .json({ success: true, message: "성공적으로 로그아웃 되셨습니다." });
     }
   );
-});
-
-app.listen(port, () => {
-  console.log(`성공적으로 서버를 실행했습니다. ${port}`);
 });

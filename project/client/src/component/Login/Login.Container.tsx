@@ -1,18 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, {
   ChangeEvent,
-  useEffect,
-  useState,
-  MouseEvent,
-  FormEventHandler,
   FormEvent,
+  FormEventHandler,
+  useState,
 } from "react";
-import LoginPageUI from "./Login.Presenter";
-import axios from "axios";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../_action/user_action";
 import { useNavigate } from "react-router-dom";
-import { withAuth } from "../../hoc/isAuth";
+import { loginUser } from "../../_action/user_action";
+import LoginPageUI from "./Login.Presenter";
 
 export default function LoginPage() {
   const navigate = useNavigate();
