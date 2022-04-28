@@ -1,16 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import App from "./App";
-import { applyMiddleware } from "redux";
-import { legacy_createStore as createStore } from "redux";
-import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
-import promiseMiddleware from "redux-promise";
-import ReduxThunk from "redux-thunk";
-import Reducer from "./_reducers";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import App from "./App";
 import { persistor, store } from "./_reducers/store";
 
 const root = ReactDOM.createRoot(

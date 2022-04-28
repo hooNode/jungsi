@@ -1,6 +1,6 @@
 import React from "react";
 import LandingPageUI from "./Landing.Presenter";
 
-export default function LandingPage() {
+export default async function LandingPage() {
   return <LandingPageUI />;
 }
